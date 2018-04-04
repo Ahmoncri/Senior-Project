@@ -5,14 +5,12 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <title>Creating a Store Locator on Google Maps</title>
   <style>
-    /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
     #map {
       height: 100%;
     }
-    /* Optional: Makes the sample page fill the window. */
     html, body {
-      height: 100%;
+      height: 60%;
+      width: 60%;
       margin: 0;
       padding: 0;
     }
@@ -169,5 +167,9 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVansFU4zqmOoFlCghdgCc0MIFgxFCe1k&callback=initMap">
     </script>
+
+    <form action="add.php">
+      <input type="submit" value="Add a Marker">
+    </form>
   </body>
 </html>
