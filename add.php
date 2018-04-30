@@ -97,4 +97,5 @@
     </li>
   </ul>
 </form>
+<a href = 'index.html';>Back to Main Menu</a><br><br>
 <a href = "logout.php";>Log Out</a>

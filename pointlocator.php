@@ -25,20 +25,21 @@ $query = sprintf("SELECT 'Student Number', name, address, latitude, longitude, (
   mysqli_real_escape_string($connection, $center_lat),
   mysqli_real_escape_string($connection, $radius));
 $result = mysqli_query($connection, $query);
-$result = mysqli_query($connection, $query);
+
 if (!$result) {
   die("Invalid query: " . mysqli_error());
 }
 // Iterate through the rows, adding XML nodes for each
-
 while ($row = @mysqli_fetch_assoc($result)){
+  $offset = rand(0,1000)/10000000;
+  $offset2 = rand(0,1000)/10000000;
   $node = $dom->createElement("marker");
   $newnode = $parnode->appendChild($node);
   $newnode->setAttribute("StudentNumber", $row['Student Number']);
   $newnode->setAttribute("name", $row['name']);
   $newnode->setAttribute("address", $row['address']);
-  $newnode->setAttribute("latitude", $row['latitude']);
-  $newnode->setAttribute("longitude", $row['longitude']);
+  $newnode->setAttribute("latitude", $row['latitude'] + $offset);
+  $newnode->setAttribute("longitude", $row['longitude'] + $offset2);
   $newnode->setAttribute("distance", $row['distance']);
 }
 echo $dom->saveXML();
