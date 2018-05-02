@@ -3,7 +3,7 @@
 <?php
   include('phpsqlsearch_dbinfo.php');
   session_start();
-  $connection=mysqli_connect("127.0.0.1", $username, $password, $database);
+  $connection=mysqli_connect($ipaddress, $username, $password, $database);
 
   $user_check = $_SESSION['login_user'];
 
@@ -16,20 +16,6 @@
   if(!isset($_SESSION['login_user'])){
     header("location:login.php");
   }
-?>
-<!--<form action="delete.php" method="post">
-  <ul class="form-style-1">
-    <li>
-      <label>Point Number <span class="required">*</span></label>
-      <input type="text" id='pointnum' name='pointnum' class="field-long" />
-    </li>
-    <li>
-      <input type="submit" value="Submit" />
-    </li>
-  </ul>
-</form>
-<a href = "logout.php";>Log Out</a>-->
-<?php
 
 $result = mysqli_query($connection,"SELECT * FROM markers");
 
@@ -66,6 +52,7 @@ echo "<table class='gridtable' align='center' border='1'>
   <tr>
     <th>Name</th>
     <th>Student Number</th>
+    <th>Company Name</th>
     <th>Address</th>
     <th>Type</th>
     <th>Point Number</th>
@@ -76,6 +63,7 @@ while($row = mysqli_fetch_array($result))
   echo "<tr>";
     echo "<td>" . $row['Name'] . "</td>";
     echo "<td>" . $row['Student Number'] . "</td>";
+    echo "<td>" . $row['JobName'] . "</td>";
     echo "<td>" . $row['Address'] . "</td>";
     echo "<td>" . $row['Type'] . "</td>";
     echo "<td>" . $row['pointnum'] . "</td>";
@@ -90,6 +78,17 @@ echo "<form action='delete.php' method='post'>
     </li>
     <li>
       <input type='submit' name='delete' value='Delete' />
+    </li>
+  </ul>
+</form>
+<form action='edit.php' method='post'>
+  <ul class='form-style-1' position=left>
+    <li>
+      <label>Point Number of Marker to Edit: <span class='required'></span></label>
+      <input type='text' id='pointnum' name='pointnum' class='field-long' />
+    </li>
+    <li>
+      <input type='submit' name='edit' value='Edit' />
     </li>
   </ul>
 </form>

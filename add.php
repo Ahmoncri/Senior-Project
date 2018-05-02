@@ -4,7 +4,7 @@
 <?php
   include('phpsqlsearch_dbinfo.php');
   session_start();
-  $connection=mysqli_connect("127.0.0.1", $username, $password, $database);
+  $connection=mysqli_connect($ipaddress, $username, $password, $database);
 
   $user_check = $_SESSION['login_user'];
 
@@ -63,6 +63,21 @@
     <li>
       <label>Student Number <span class="required">*</span></label>
       <input type="text" name="StudentNumber" class="field-long" />
+    </li>
+
+    <li>
+      <label>Company Name <span class="required">*</span></label>
+      <input type="text" id='company' name="company" class="field-long" />
+    </li>
+
+    <li>
+      <label>Title <span class="required">*</span></label>
+      <input type="text" id='title' name='title' class="field-long" />
+    </li>
+
+    <li>
+      <label>Website </label>
+      <input type="text" id='website' name="website" class="field-long" />
     </li>
 
     <form id='location-form'>

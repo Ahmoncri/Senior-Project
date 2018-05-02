@@ -2,7 +2,7 @@
 require("phpsqlsearch_dbinfo.php");
 
 
-$connection=mysqli_connect ("127.0.0.1", $username, $password, $database);
+$connection=mysqli_connect ($ipaddress, $username, $password, $database);
 if (!$connection) {
   die("Not connected : " . mysql_error());
 }
@@ -14,12 +14,15 @@ if (!$db_selected) {
 
 $StudentNumber = mysqli_real_escape_string($connection, $_REQUEST['StudentNumber']);
 $Name = mysqli_real_escape_string($connection, $_REQUEST['name']);
+$Company = mysqli_real_escape_string($connection, $_REQUEST['company']);
+$Website = mysqli_real_escape_string($connection, $_REQUEST['website']);
+$Title = mysqli_real_escape_string($connection, $_REQUEST['title']);
 $Address = mysqli_real_escape_string($connection, $_REQUEST['address']);
 $Latitude = mysqli_real_escape_string($connection, $_REQUEST['latitude']);
 $Longitude = mysqli_real_escape_string($connection, $_REQUEST['longitude']);
 $Type = mysqli_real_escape_string($connection, $_REQUEST['type']);
 
-$sql = "INSERT INTO `markers`(`Student Number`, `Name`, `Address`, `Latitude`, `Longitude`, `Type`) VALUES ('$StudentNumber', '$Name', '$Address', '$Latitude', '$Longitude', '$Type')";
+$sql = "INSERT INTO `markers`(`Student Number`, `Name`, `JobName`, `website`, `Address`, `Latitude`, `Longitude`, `Type`, `Title`) VALUES ('$StudentNumber', '$Name', '$Company', '$Website', '$Address', '$Latitude', '$Longitude', '$Type', '$Title')";
 
 if(!mysqli_query($connection, $sql)){
   echo 'Not Inserted';

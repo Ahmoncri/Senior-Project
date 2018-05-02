@@ -13,19 +13,20 @@
     die ("Can\'t use db : " . mysql_error());
   }
 
-  if(isset($_POST['delete'])){
+  if(isset($_POST['edit'])){
     $pointnum = $_POST['pointnum'];
     //mysqli_real_escape_string($connection, $_REQUEST['pointnum']);
 
-    $sql = "DELETE FROM markers WHERE pointnum = '$pointnum'";
+    $sql = "SELECT * FROM markers WHERE pointnum = '$pointnum'";
     $result = mysqli_query($connection,$sql);
-
+    $row = @mysqli_fetch_assoc($result);
+    
     if(!$result)
     {
-      echo 'Not Deleted';
+      echo 'Not Modified';
     }
     else{
-      echo 'Deleted';
+      echo 'Modified';
     }
   }
   header("refresh:2; url=remove.php");

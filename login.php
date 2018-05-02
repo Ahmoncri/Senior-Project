@@ -1,7 +1,7 @@
 <?php
    include("phpsqlsearch_dbinfo.php");
    session_start();
-   $connection=mysqli_connect("127.0.0.1", $username, $password, $database);
+   $connection=mysqli_connect($ipaddress, $username, $password, $database);
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form
@@ -72,6 +72,7 @@
          </div>
 
       </div>
+      <a href = 'index.html';>Back to Main Menu</a>
 
    </body>
 </html>

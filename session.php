@@ -1,7 +1,7 @@
 <?php
 include("phpsqlsearch_dbinfo.php");
 session_start();
-$connection=mysqli_connect("127.0.0.1", $username, $password, $database);
+$connection=mysqli_connect($ipaddress, $username, $password, $database);
 
    $user_check = $_SESSION['login_user'];
 
